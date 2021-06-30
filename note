@@ -1,0 +1,5 @@
+>HttpResponse ... responsible for returning a response to a user.
+>URLconf >>>creates a map between the url and the view function.
+>r shows its a raw string
+^(caret)  ensurues will require that ragex patterns to match at the start of the string..
+>{%url%}...how we create links in Django
