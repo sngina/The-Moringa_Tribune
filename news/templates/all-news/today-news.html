@@ -1,7 +1,8 @@
 {%extends 'all-news/base.html'%}
+{%load bootstrap3 %}
 {% block content %}
 {{block.super}}
-{%load bootstrap3 %}
+
 <div class="container">
 
   <!-- Looping through news   -->
@@ -14,28 +15,29 @@
       <h2 class="text-center"> {{ news_item.title }} </h2>
     </div>
   </div>
-  <!-- Looping through news end   -->
-  <div class="container-fluid">
 
-    <form action="{%url 'newsToday'%}" method="post">
-      {%csrf_token%}
 
-      {% bootstrap_form letterForm layout='inline' %}
-      <input type="submit" value="Subscribe">
-    </form>
+</div>
 
-  </div>
+<!--Display news Article images  -->
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+  <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image">
+</div>
 
-  <!--Display news Article images  -->
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image">
-  </div>
+{% empty %}
+<div class="row">
+  <h2 class="text-center">There No News Items</h2>
+</div>
+{% endfor %}
+<!-- Looping through news end   -->
+<div class="container-fluid">
 
-  {% empty %}
-  <div class="row">
-    <h2 class="text-center">There No News Items</h2>
-  </div>
-  {% endfor %}
-
+  <form action="{%url 'newsToday'%}" method="post">
+    {%csrf_token%}
+    {%for field in letterform%}
+    {% bootstrap_field field %}
+    <input type="submit" value="Subscribe">
+  </form>
+  {%endfor%}
 </div>
 {% endblock %}

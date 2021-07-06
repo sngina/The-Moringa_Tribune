@@ -50,7 +50,8 @@ def news_today(request):
             print('valid')
     else:
             form = NewsLetterForm()
-            return render(request, 'all-news/today-news.html', {"date": date,"news":news,"letterForm":form})
+            print(form)
+            return render(request, 'all-news/today-news.html', {"date": date,"news":news,"anything":form})
 
 def search_results(request):
 
