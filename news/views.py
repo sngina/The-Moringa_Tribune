@@ -3,6 +3,9 @@ from django.http import HttpResponse ,Http404
 import datetime as dt
 from .models import Article
 from .forms import NewsLetterForm
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 def welcome(request):
     # return HttpResponse('Welcome to the Moringa Tribune')
@@ -51,7 +54,7 @@ def news_today(request):
     else:
             form = NewsLetterForm()
             print(form)
-            return render(request, 'all-news/today-news.html', {"date": date,"news":news,"anything":form})
+            return render(request, 'all-news/today-news.html', {"date": date,"news":news,"letterform":form})
 
 def search_results(request):
 
@@ -65,7 +68,7 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-news/search.html',{"message":message})
-
+@login_required(login_url='/accounts/login/')
 def article(request,article_id):
     try:
         article = Article.objects.get(id = article_id)
