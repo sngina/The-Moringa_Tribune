@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news',
     'bootstrap3',
+    'tinymce',
 
 ]
 
