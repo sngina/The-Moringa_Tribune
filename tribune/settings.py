@@ -153,7 +153,7 @@ if config('MODE')=="dev":
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
            'NAME': config('DB_NAME'),
            'USER': config('DB_USER'),
-           'PASSWORD': 'sam@2021',
+           'PASSWORD': 'moneypesa',
            'HOST': config('DB_HOST'),
            'PORT': '',
        }
