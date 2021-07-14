@@ -5,6 +5,7 @@ from .models import Article,NewsLetterRecipients
 from .forms import NewsLetterForm,NewArticleForm
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def article(request, article_id):
